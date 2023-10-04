@@ -1,0 +1,988 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Dratewka the Shoemaker</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Press Start 2P', cursive;
+            letter-spacing: 2.95px;
+        }
+        #screenshot{
+            position: absolute;
+            width: 100%;
+            z-index:; 200;
+            top: 0;
+            opacity: 0;
+            display: none;
+            content: url(img/start/end1.png);
+            transition-duration: 1s;
+        }
+        body{
+            background: #021F01;
+            padding-top: calc(40vh - 100px);
+            color: #B1DC43;
+            min-width: 850px;
+            height: 100%;
+            font-size: 100%; /*1.853vmin;*/
+            overflow-x: hidden;
+        }
+        header{
+            font-size: 7vmin;
+            width: 100%;
+            color: #B1DC43;
+            text-align: center;
+            position: absolute;
+            padding-top: 2vmin;
+            top: 0;
+            text-shadow: 0.3vmin 0.7vmin 0 rgba(0, 0, 0, 0.63)
+            
+        }
+        footer{
+            font-size: 1.4vmin;
+            text-shadow: 0.2vmin 0.24vmin 0 rgba(0, 0, 0, 0.63);
+            width: calc(100% - 2vmin);
+            color: #B1DC43;
+            text-align: right;
+            position: fixed;
+            margin: 0 auto;
+            bottom: 1vmin;
+            right: 1vmin;
+        }
+        .plansza{
+            /*Dynamiczne wymiary*/
+            width: calc(800px*1);
+            height: calc(478px*1);
+            font-size: calc(1.05em*1 - 10%);
+            border: calc(15px*1) solid #b6b6b6;
+            /*Dynamiczne wymiary*/
+            
+            box-shadow: calc(0.3*11px) calc(0.7*11px) 0 rgba(45, 45, 45, 0.83);
+            overflow: hidden;
+            background: #2e2e2e;
+            margin: 0 auto;
+            color: #b6b6b6;
+            background-image:; url(img/tlo.png);
+            background-size: 100%;
+            background-position: -2px;
+            position: relative;
+        }
+        body .fullscreen{
+            position: fixed;
+            top: 0;
+            left: 0;
+            border: none;
+        }
+        #local{
+            display: block;
+            border:;  4px solid #b6b6b6;
+            background: #b6b6b6;
+            width: 40.8%;
+            clear: both;
+            margin-left: 4.3%;
+            margin-top: 0.8%;
+            padding: 0.15%;
+        }
+        #local figure{
+            width: 99%;
+            display: block;
+            opacity: 1;
+            margin: 0.5%;
+        }
+        #local figure img{
+            width: 100%;
+            opacity: 0.9;
+        }
+        #compass{
+            position: absolute;
+            right: 9.4%;
+            top: 21.5%;
+            width: 35.8%;
+            height: 30.2%;
+            background:; rgba(255, 0, 0, 0.50);
+        }
+        #compass img{
+            position: relative;
+        }
+        #compass #compass_pic{
+            width: 98%;
+            top: 10.2%;
+            left: 1%;
+        }
+        #compass #compass_w{
+            cursor: pointer;
+            position: absolute;
+            width: 5%;
+            top: 29.6%;
+            left: 0.4%;
+        }
+        #compass #compass_n{
+            cursor: pointer;
+            position: absolute;
+            width: 5%;
+            top: 0%;
+            right: 50.5%;
+        }
+        #compass #compass_e{
+            cursor: pointer;
+            position: absolute;
+            width: 5%;
+            top: 29.6%;
+            right: 0.4%;
+        }
+        #compass #compass_s{
+            cursor: pointer;
+            position: absolute;
+            width: 5%;
+            bottom: 0%;
+            right: 48%;
+        }
+        #plansza #section{
+            display: block;
+            background:; rgba(255, 0, 0, 0.50);
+            width: 100%;
+            height: 45.5%;
+            position: absolute;
+            top: 55%;
+        }
+        #plansza #top_section{ 
+            display: block;
+            background:; rgba(255, 0, 0, 0.50);
+            width: 100%;
+            line-height: 100%;
+            margin: 1.3% 0 0 0;
+        }
+        #plansza span{
+            font-size: 113%;
+            margin: 0 0 0 4.6%;
+            line-height: 180%;
+            display: block;
+        }
+        #plansza .story span{
+            line-height: 130%;
+        }
+        #plansza #what_now{
+            background:; rgba(255, 0, 0, 0.50);
+            position: absolute;
+            top: 62%;
+            right: 0;
+            width: 100%;
+            height: 18.3%;
+        }
+        #plansza #section #what_now *{
+            line-height: 150%;
+        }
+        #plansza #what_now #span8{
+            margin: -0.1% 0 0 4.9%;
+            letter-spacing: 1px;
+            background:; rgba(255, 0, 0, 0.50);
+            position: absolute;
+        }
+        #what_now div{
+            width: 94.5%;
+            height: 200%;
+            margin-left: 4.5%;
+            background:; rgba(0, 255, 0, 0.50);
+            overflow-x: hide;
+            
+        }
+        #what_now .command{
+            text-indent: 20.7%;
+            display: block;
+            background:; rgba(182,182,182, 1);
+            line-height: 150%;
+            float: left;
+            max-width: 100%;
+            max-height: 100%;
+            clear: both;
+            text-transform: uppercase;
+            margin: 0 0 0 1%;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        #what_now #prompting{
+            background: #b6b6b6;
+            width: 2.4%;
+            padding-bottom: 2.4%;
+            margin-top: 0.5%;
+            margin-left: -0.3%;
+            float: left;
+        }
+        #intro{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 200%;
+            font-size: 150%;
+            background: #2e2e2e;
+            color: #b6b6b6;
+        }
+        #intro span{
+            margin: 0 auto;
+            padding: 25% 0;
+            text-shadow: 0.15vmin 0.4vmin 0 rgba(0, 0, 0, 0.63)
+        }
+        #plansza #intro_img{
+            width: 100%;
+            display: block;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            transition-duration: 1s;
+        }
+        #button{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 41px;
+            z-index: 600;
+            background: rgba(0, 0, 0, 0.63);
+            font-size: 1.4vmin;
+            text-shadow: 0.2vmin 0.24vmin 0 rgba(0, 0, 0, 0.63);
+            text-indent: 4px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        function _Location(){
+            this.text=arguments[0]
+            this.color=arguments[1]
+            this.picture=arguments[2]
+            this.path=arguments[3]
+            this.item=arguments[4]
+        }
+        function _Item() {
+            this.id = arguments[0];
+            this.opis = arguments[1];
+            this.flag = arguments[2];
+            this.nazwa = arguments[3];
+            /*this.log = function () {
+                console.log(this)
+            }*/
+        }
+        function _Interaction() {
+            this.item=arguments[0]
+            this.location=arguments[1]
+            this.reward=arguments[2]
+            this.into_hand=arguments[3]
+            this.text=arguments[4]
+            this.milestone=arguments[5]
+        }
+        var game={
+            x : 3,
+            y : 6,
+            inventory : [],
+            milestone : 0,
+            action : false,
+            items : [
+                new _Item(0, "something", 0, "something"),
+                1,2,3,4,5,6,7,8,
+                new _Item(9, "Jakub Niechaj", 0, "Niechaj"),
+                new _Item(10, "a KEY", 1, "KEY"), new _Item(11, "an AXE", 1, "AXE"), 
+                new _Item(12, "STICKS", 1, "STICKS"), new _Item(13, "sheeplegs", 0, "sheeplegs"), 
+                new _Item(14, "MUSHROOMS", 1, "MUSHROOMS"), new _Item(15, "MONEY", 1, "MONEY"), 
+                new _Item(16, "a BARREL", 1, "BARREL"), new _Item(17, "a sheeptrunk", 0, "sheeptrunk"), 
+                new _Item(18, "BERRIES", 1, "BERRIES"), new _Item(19, "WOOL", 1, "WOOL"),
+                new _Item(20, "a sheepskin", 0, "sheepskin"), new _Item(21, "a BAG", 1, "BAG"), 
+                new _Item(22, "a RAG", 1, "RAG"),new _Item(23, "a sheep head", 0, "sheep head"), 
+                new _Item(24, "a SPADE", 1, "SPADE"), new _Item(25, "SULPHUR", 1, "SULPHUR"), 
+                new _Item(26, "a solid poison", 0, "solid poison"), 
+                new _Item(27, "a BUCKET", 1, "BUCKET"), 
+                new _Item(28, "TAR", 1, "TAR"), new _Item(29, "a liquid poison", 0, "liquid poison"),
+                new _Item(30, "a deaddragon", 0, "deaddragon"), new _Item(31, "a STONE", 1, "STONE"), 
+                new _Item(32, "a FISH", 1, "FISH"), new _Item(33, "a KNIFE", 1, "KNIFE"), 
+                new _Item(34, "a DRAGONSKIN", 1, "DRAGONSKIN"), 
+                new _Item(35, "a dragonskin SHOES", 1, "SHOES"), 
+                new _Item(36, "a PRIZE", 1, "PRIZE"), new _Item(37, "a SHEEP", 1, "SHEEP")
+            ],
+            resize_game : function(){
+                if(arguments[0] == false){
+                    var play = document.getElementById("plansza")
+                    play.style.height = (arguments[1]).toString() + "px"
+                    play.style.width = ((arguments[1]/478) * 800).toString() + "px"
+                    play.style.letterSpacing = ((arguments[1]/478)*2,95).toString() + "px"
+                    document.getElementById("span8").style.letterSpacing = (arguments[1]/478).toString() + "px"
+                }else{
+                    var play = document.getElementById("plansza")
+                    play.style.height = ((arguments[0]/800) *478).toString() + "px"
+                    play.style.width = (arguments[0]).toString() + "px"
+                    play.style.letterSpacing = ((arguments[0]/800)*2,95).toString() + "px"
+                    document.getElementById("plansza").classList.toggle("fullscreen")
+                    document.getElementById("span8").style.letterSpacing = (arguments[0]/800).toString() + "px"
+                }
+            },
+            fullscreen_count : false,
+            fullscreen : function(){
+                if(game.fullscreen_count == true){
+                    if(window.innerWidth * 800 < window.innerHeight * 478){
+                        game.resize_game(false,window.innerHeight)
+                    }else{
+                        game.resize_game(window.innerWidth,false)
+                    }
+                }else{
+                    game.resize_game(800,false)
+                }
+            },
+            load_location : function(){
+                if(game.milestone == 9){
+                    document.getElementById("span1").textContent = "But...   What now?"
+                    document.getElementById("span2").textContent = ""
+                    document.getElementById("span3").textContent = ""
+                    document.getElementById("span4").textContent = ""
+                    document.getElementById("span5").textContent = ""
+                    document.getElementById("span6").textContent = ""
+                    document.getElementById("span7").textContent = ""
+                    document.getElementById("span8").textContent = ""
+                    var scn = document.getElementById("screenshot")
+                    document.getElementById("location_figure").style="background: #801010"
+                    scn.style.display = "block"
+                    scn.style.opacity = "1"
+                    scn.style.zIndex = "200"
+                } else {
+                    game.action = false
+                    where = game.map[game.x][game.y]
+                    if(where.item.length > 3){  
+                        document.getElementById("section").classList.add("story")
+                    } else{
+                        document.getElementById("section").classList.remove("story")
+                    }
+                    var directions = ["WEST", "NORTH", "EAST", "SOUTH",]
+                    var compass_directions = ["compass_w", "compass_n", "compass_e", "compass_s"]
+                    var directions_text = "You can go "
+                    var sight_text = "You see "
+                    var carry_text = "You are carrying "
+                    for(var i = 0; i < where.path.length; i ++){
+                        document.getElementById(compass_directions[i]).style.display = "none"
+                        var first
+                        if(where.path[i] == true){
+                            if(first == 1){
+                                directions_text += ", "
+                            }
+                            document.getElementById(compass_directions[i]).style.display = ""
+                            directions_text += directions[i]
+                            first = 1
+                        }
+                    }
+                    if(directions_text == "You can go "){
+                        directions_text += "nowhere"
+                    }
+                    for(var i = 0; i < where.item.length; i++){
+                        if(i != 0){
+                            sight_text += ", "
+                        }
+                        sight_text += where.item[i].opis
+                    }
+                    if(where.item.length == 0)
+                        sight_text += /*"sheeplegs, a sheeptrunk, a sheepskin, a sheephead, a solid poison, a BUCKET" */"nothing"
+                    if(game.inventory.length == 0)
+                        carry_text += "nothing"
+                    else
+                        carry_text += game.inventory[0].opis
+
+                    console.log(game.x,game.y, where.text, where.item.length)
+                    document.getElementById("span1").textContent = where.text
+                    document.getElementById("location_pic").src="img/" + where.picture + ".png"
+                    document.getElementById("location_figure").style="background: " + where.color
+                    document.getElementById("span8").textContent = " What now?"
+                    document.getElementById("command_div").style.display = ""
+                    //document.getElementById("command").focus()
+                    game.methods.text([directions_text, sight_text, carry_text])
+                    /*document.getElementById("span2").textContent = directions_text
+                    document.getElementById("span3").textContent = sight_text
+                    document.getElementById("span4").textContent = carry_text
+                    document.getElementById("span5").textContent = ""
+                    document.getElementById("span6").textContent = ""
+                    document.getElementById("span7").textContent = ""*/
+                }
+            },
+            init : function(){
+                game.methods.plansza()
+                game.methods.keydown()
+            },
+            intro : {
+                intro_count : 0,
+                next_intro : function(){
+                    if(game.intro.intro_count == 1){
+                        document.getElementById("plansza").innerHTML = '<audio id="audio" autoplay loop><source src="sound/hejnal.mp3" type="audio/mpeg"></audio>';
+                        game.intro.screen_delay = 27000
+                    }else{
+                        document.getElementById("plansza").innerHTML = ""
+                        game.intro.screen_delay = 20000
+                    }
+                    var poj = document.createElement("div")
+                    poj.style.background = "#021F01"
+                    poj.id = "intro"
+                    var div = document.createElement("div")
+                    div.id = "intro_img"
+                    div.style = "background-image: url(" + arguments[0] + ")"
+                    poj.appendChild(div)
+                    document.getElementById("plansza").appendChild(poj)
+                    div.style.transitionDuration = "1s"
+                    div.style.opacity = "0"
+                    clearTimeout(game.intro.screen_animation)
+                    game.intro.screen_animation = setTimeout(
+                        function(){
+                            document.getElementById("intro_img").style.opacity = "1"
+                        },
+                    750)
+                    game.intro.screen = setTimeout(
+                                function(){
+                                    document.body.onkeydown = function(){}
+                                    clearTimeout(game.intro.screen)
+                                    clearTimeout(game.intro.screen_animation)
+                                    document.getElementById("intro_img").style.opacity = "0"
+                                    game.intro.screen_animation = setTimeout(
+                                        function(){
+                                            game.intro.screen_keydown()
+                                            game.intro.intro_count += 1
+                                            if(game.intro.intro_count > 3){
+                                                game.init()
+                                            }else{
+                                                text = "img/start/start" +  game.intro.intro_count.toString() + ".png"
+                                                game.intro.next_intro(text)
+                                            }
+                                        },
+                                    750)
+                                },
+                                game.intro.screen_delay)
+                },
+                screen_animation : "",
+                screen : "",
+                screen_delay : 10000,
+                screen_keydown : function(){
+                        document.body.onkeydown = function(event){
+                            document.body.onkeydown = function(){}
+                            clearTimeout(game.intro.screen)
+                            clearTimeout(game.intro.screen_animation)
+                            document.getElementById("intro_img").style.opacity = "0"
+                            game.intro.screen_animation = setTimeout(
+                                function(){
+                                    game.intro.screen_keydown()
+                                    game.intro.intro_count += 1
+                                    if(game.intro.intro_count > 3){
+                                        game.init()
+                                    }else{
+                                        text = "img/start/start" +  game.intro.intro_count.toString() + ".png"
+                                        game.intro.next_intro(text)
+                                    }
+                                },
+                            750)
+                        }
+                    },
+                intro_start: function(){
+                    var div = document.createElement("div")
+                    div.id = 'intro'
+                    var span = document.createElement("span")
+                    span.textContent = "Press any key to start"
+                    span.id = 'intro_screen'
+                    div.appendChild(span)
+                    document.getElementById("plansza").appendChild(div)
+                    document.body.onkeydown = function(event){
+                        game.intro.screen_keydown()
+                        clearTimeout(game.intro.screen)
+                        clearTimeout(game.intro.screen_animation)
+                            game.intro.intro_count += 1
+                            if(game.intro.intro_count > 3){
+                                game.init()
+                            }else{
+                                text = "img/start/start" +  game.intro.intro_count.toString() + ".png"
+                                game.intro.next_intro(text)
+                            }
+                    }
+                }
+            },
+            methods : {
+                plansza : function(){
+                    document.getElementById("plansza").innerHTML = "<img src='img/start/end1.png' id='screenshot' /><div id='top_section' ><span id='span1'>You are in a frontyard of your house</span></div><div id='local' ><figure id='location_figure'><img id='location_pic' src='img/47.png' ></figure></div><div id='compass' ><img id='compass_pic' src='img/compass/compass.png' ><img id='compass_w' src='img/compass/w.png' ><img id='compass_n' src='img/compass/n.png' ><img id='compass_e' src='img/compass/e.png' ><img id='compass_s' src='img/compass/s.png' ></div><div id='section' class=''><span id='span2'>You can go WEST, NORTH, SOUTH</span><span id='span3'>You see nothing</span><span id='span4'>You are carrying nothing</span><span id='span5'>You are carrying nothing</span><span id='span6'>You are carrying nothing</span><span id='span7'>You are carrying nothing</span><span id='what_now'><span id='span8' >What now?</span><div id='command_div' con> <span class='command' id='command'></span><span id='prompting'></span></div></span></div>"
+                    document.getElementById("command").textContent = " "
+                    /*var input = document.createElement("input")
+                    input.id = 'command'
+                    input.type = 'text'
+                    input.name = 'command'
+                    input.autofocus = true
+                    input.onblur = function(){
+                        input.focus();
+                    }
+                    document.getElementById("what_now").appendChild(input)*/
+                    game.load_location()
+                },
+                keydown : function(){
+                    var that=this
+                    console.log("that", that)
+                    document.body.onkeydown = function(event){
+                        var keycode = arguments[0].which
+                        if(((keycode>64 && keycode<91) || keycode==32) && document.getElementById("command").textContent.length < 25 && game.action == false){
+                            document.getElementById("command").textContent += String.fromCharCode(keycode)
+                        }else if (document.getElementById("command").textContent.length > 1 && keycode == 8 && game.action == false){
+                            document.getElementById("command").textContent = document.getElementById("command").textContent.substring(0, document.getElementById("command").textContent.length - 1)
+                        }else if(keycode == 13 && document.getElementById("command").textContent.length > 0 && game.action == false){
+                            var value =  document.getElementById("command").textContent
+                            document.getElementById("command").textContent = " "
+                            game.methods.enter(
+                                value,
+                                that
+                            )
+                        }
+                        //that.wczytaj_lokacje()
+                    }
+                //game.methods.prompting()
+                },
+                enter : function(){
+                    console.log(arguments[0].toUpperCase(), arguments[0][0])
+                    var command = arguments[0].toUpperCase().split(" ")
+                    if(command.length == 2){
+                        switch (command[1]) {
+                            case "WEST":
+                            case "W":
+                                game.action = true
+                                if(game.map[game.x][game.y].path[0] == true){
+                                    if(game.map[game.x][game.y - 1].picture == "41" && game.milestone < 8){
+                                        game.methods.alert(["You can't go that way...", "The dragon spleeps in a cave!"],1500)
+                                    }else{
+                                        game.y--
+                                        game.methods.alert(["You are going west..."],750)
+                                    }
+                                } else {
+                                    game.methods.alert(["You can't go that way"],1000)
+                                }
+                                break;
+                            case "NORTH":
+                            case "N":
+                                game.action = true
+                                if(game.map[game.x][game.y].path[1] == true){
+                                    game.x--
+                                    game.methods.alert(["You are going north..."],750)
+                                } else {
+                                    game.methods.alert(["You can't go that way"],1000)
+                                }
+                                break;
+                            case "EAST":
+                            case "E":
+                                game.action = true
+                                if(game.map[game.x][game.y].path[2] == true){
+                                    game.y++
+                                    game.methods.alert(["You are going east..."],750)
+                                } else {
+                                    game.methods.alert(["You can't go that way"],1200)
+                                }
+                                break;
+                            case "SOUTH":
+                            case "S":
+                                game.action = true
+                                if(game.map[game.x][game.y].path[3] == true){
+                                    game.x++
+                                    game.methods.alert(["You are going south..."],750)
+                                } else {
+                                    game.methods.alert(["You can't go that way"],1200)
+                                }
+                                break;
+                            case "VOCABULARY":
+                            case "V":
+                                game.action = true
+                                game.methods.text(
+                                    ["NORTH or N, SOUTH or S",
+                                    "WEST or W, EAST or E",
+                                    "TAKE (object) or T (object)",
+                                    "DROP (object) or D (object)",
+                                    "USE (object) or U (object)",
+                                    "GOSSIPS or G, VOCABULARY or V"],
+                                    "Press any key")
+                                break;
+                            case "GOSSIPS":
+                            case "G":
+                                game.action = true
+                                game.methods.text(
+                                    ["The  woodcutter lost  his home key...",
+                                    "The butcher likes fruit... The cooper",
+                                    "is greedy... Dratewka plans to make a",
+                                    "poisoned  bait for the dragon...  The",
+                                    "tavern owner is buying food  from the",
+                                    "pickers... Making a rag from a bag..."],
+                                    "Press any key")
+                                break;
+                            default:
+                                game.action = true
+                                game.methods.alert(["Try another word or V for vocabulary"],1750)            
+                        }
+                    }else if (command.length == 3){
+                        switch(command[1]){
+                            case "TAKE":
+                            case "T":
+                                game.action = true
+                                if(game.inventory.length == 0){
+                                    game.methods.take(command)
+                                } else {
+                                    game.methods.alert(["You are carrying something"],1200)
+                                }
+                                break;
+                            case "DROP":
+                            case "D":
+                                game.action = true
+                                if(game.inventory.length > 0){
+                                    game.methods.drop(command)
+                                } else {
+                                    game.methods.alert(["You are carrying nothing"],1200)
+                                }
+                                break;
+                            case "USE":
+                            case "U":
+                                game.action = true
+                                if(game.inventory.length > 0){
+                                    game.methods.use(command)
+                                } else {
+                                    game.methods.alert(["You are carrying nothing"],1200)
+                                }
+                                break;
+                            default:
+                                game.action = true
+                                game.methods.alert(["Try another word or V for vocabulary"],1750)   
+                        }
+                    }else{
+                        game.methods.alert(["Too many words, Check V for vocabulary"],1750)
+                    }
+                },
+                alert : function(){
+                    document.getElementById("command_div").style.display = "none"
+                    document.getElementById("span8").textContent = arguments[0][0].toString()
+                    console.log("ARGUMENTY ZERO",arguments[0])
+                    var tab = []
+                    var timer = arguments[1]
+                    for(var i = 1; i < arguments[0].length; i++){
+                        console.log("TAB TAK WYGLĄDA", arguments[0][i])
+                        tab[i-1] = arguments[0][i]
+                    }
+                    if(arguments[0].length > 1){
+                        window.setTimeout(
+                            function(){
+                                console.log("JESZCZE RAZ", tab, timer)
+                                game.methods.alert(tab, timer)
+                            },
+                        timer)
+                    } else{
+                        console.log("RELOAD")
+                        window.setTimeout(
+                            function(){
+                                 game.load_location()
+                            },
+                        arguments[1])
+                    }
+                },
+                text : function(){
+                    var b = 0;
+                    for(var i = 0; i < arguments[0].length; i ++){
+                        console.log("span" + (i + 2), arguments[0][i])
+                        document.getElementById("span" + (i + 2)).textContent = arguments[0][i]
+                        b++
+                    }
+                    for(var i = b; i < 6; i++){
+                        console.log("span" + (i + 2), " ")
+                        document.getElementById("span" + (i + 2)).textContent = ""
+                    }
+                    console.log(arguments.length)
+                    if(arguments.length == 2){
+                        document.getElementById("section").classList.add("story")
+                        document.getElementById("command_div").style.display = "none"
+                        document.getElementById("span8").textContent = arguments[1]
+                        document.body.onkeydown = function(event){
+                            //document.getElementById("section").classList.remove("story")
+                            game.methods.keydown()
+                            game.load_location()
+                        }
+                    }
+                },
+                take: function(){
+                    console.log("take",arguments[0])
+                    var tab = []
+                    var text = ""
+                    for(var i = 0; i < game.map[game.x][game.y].item.length; i ++){
+                        if((game.map[game.x][game.y].item[i].nazwa == arguments[0][2]) && (game.map[game.x][game.y].item[i].flag == 1)){
+                            game.inventory[0] = game.map[game.x][game.y].item[i]
+                            for(var j = i; j < (game.map[game.x][game.y].item.length)-1; j ++){
+                                tab[j] = game.map[game.x][game.y].item[j+1]
+                            }
+                            game.map[game.x][game.y].item = tab
+                            text = "You are taking " + game.inventory[0].opis.toString() + "..."
+                            game.methods.alert([text], 750)
+                            break
+                        }else if(game.map[game.x][game.y].item[i].nazwa == arguments[0][2] && game.map[game.x][game.y].item[i].flag == 0){
+                            game.methods.alert(["You can't carry it"], 1000)
+                            break
+                        }
+                        if(i == game.map[game.x][game.y].item.length -1 ){
+                            game.methods.alert(["There isn't anything like that here"], 1750)
+                            break
+                        }
+                        tab[i] = game.map[game.x][game.y].item[i]
+                    }
+                    if(game.map[game.x][game.y].item.length == 0)
+                        game.methods.alert(["There isn't anything like that here"], 1750)
+                },
+                drop: function(){
+                    console.log("drop", arguments[0])
+                    var text= ""
+                    if(game.inventory[0].nazwa == arguments[0][2]){
+                        if(game.map[game.x][game.y].item.length < 3){
+                            game.map[game.x][game.y].item[game.map[game.x][game.y].item.length] = game.inventory[0]
+                            text = "You are about to drop " + game.inventory[0].opis.toString() + "..."
+                            game.inventory = []
+                            game.methods.alert([text],1200)
+                        }else{
+                            game.methods.alert(["You can't store any more here"],1750)
+                        }
+                    } else{
+                        game.methods.alert(["You aren't carrying anything like that"], 1750)
+                    }
+                },
+                use: function(){
+                    console.log("use", arguments[0])
+                    var text = ""
+                    if(game.inventory[0].nazwa == arguments[0][2]) {
+                        for(var i = 0; i < game.interactions.length; i++){
+                            if(game.inventory[0] == game.interactions[i].item && 
+                            game.x == game.interactions[i].location[0] &&
+                            game.y == game.interactions[i].location[1]){
+                                console.log(game.interactions[i])
+                                if(game.interactions[i].into_hand == true){
+                                    game.inventory[0] = game.interactions[i].reward
+                                }else{
+                                    game.inventory = []
+                                    game.map[game.x][game.y].item[game.map[game.x][game.y].item.length] = game.interactions[i].reward
+                                }
+                                if(game.interactions[i].milestone == true){
+                                    game.milestone += 1
+                                }
+                                if(i == 15){
+                                    document.getElementById("span5").innerHTML = "<audio id='audio' autoplay loop><source src='sound/kill_dragon.mp3' type='audio/mpeg'></audio>"
+                                    setTimeout(
+                                        function(){
+                                            document.getElementById("span5").innerHTML = ""
+                                        },
+                                    5000)
+                                    game.map[3][2].picture = "68"
+                                }
+                                if(i == 18){
+                                    game.map[3][0].path[2] = false
+                                }
+                                if(game.milestone == 6){
+                                    game.milestone += 1
+                                    var tab = []
+                                    var text = []
+                                    var j = 0
+                                    for(var i = 0; i < game.map[game.x][game.y].item.length; i++){
+                                        if(game.map[game.x][game.y].item[i].flag == 1){
+                                            tab[j] = game.map[game.x][game.y].item[i]
+                                            j++
+                                        }
+                                    }
+                                    game.inventory[0] = game.items[37]
+                                    game.map[game.x][game.y].item = tab
+                                    text [0] = game.interactions[i].text.toString()
+                                    text [1] = game.interactions[14].text.toString()
+                                    game.methods.alert(text, 3000)
+                                } else{
+                                    game.methods.alert(game.interactions[i].text, 3000)
+                                }
+                                break
+                            }else if(i == game.interactions.length){
+                                game.methods.alert(["Nothing happened"], 1000)
+                                break
+                            }
+                        }
+                    } else {
+                        game.methods.alert(["You aren't carrying anything like that"], 1750)
+                    }
+                }
+            }
+        }
+        
+        game.map = [[//zero
+                new _Location("You are inside a brimstone mine", "rgb(235,211,64)",
+                               "11", [false, false, true, false], []
+                              ),
+                new _Location("You are at the entrance to the mine", "rgb(89,93,87)",
+                               "12", [false, false, true, false], []
+                              ),
+                new _Location("A hill", "rgb(117,237,243)",
+                               "13", [true, false, true, true], [game.items[31]]
+                              ),
+                new _Location("Some bushes", "rgb(255,190,99)",
+                               "14", [true, false, true, false], []
+                              ),
+                new _Location("An old deserted hut", "rgb(220,204,61)",
+                               "15", [true, false, true, false], [game.items[27]]
+                              ),
+                new _Location("The edge of a forest", "rgb(167,245,63)",
+                               "16", [true, false, true, false], []
+                              ),
+                new _Location("A dark forest", "rgb(140,253,99)",
+                               "17", [true, false, false, true], [game.items[14]]
+                              )
+            ],
+            [//jeden
+                new _Location("A man nearby making tar", "rgb(255,190,99)",
+                               "21", [false, false, true, true], []
+                              ),
+                new _Location("A timber yard", "rgb(255,190,99)",
+                               "22", [true, false, true, true], []
+                              ),
+                new _Location("You are by a roadside shrine", "rgb(167,245,63)",
+                               "23", [true, true, true, true], [game.items[10]]
+                              ),
+                new _Location("You are by a small chapel", "rgb(212,229,36)",
+                               "24", [true, false, true, false], []
+                              ),
+                new _Location("You are on a road leading to a wood", "rgb(167,245,63)",
+                               "25", [true, false, true, true], []
+                              ),
+                new _Location("You are in a forest", "rgb(167,245,63)",
+                               "26", [true, false, true, false], []
+                              ),
+                new _Location("You are in a deep forest", "rgb(140,253,99)",
+                               "27", [true, true, false, false], [game.items[18]]
+                              )
+            ],
+            [//dwa
+                new _Location("You are by the Vistula River", "rgb(122,232,252)",
+                               "31", [false, true, true, false], []
+                              ),
+                new _Location("You are by the Vistula River", "rgb(140,214,255)",
+                               "32", [true, true, false, false], [game.items[32]]
+                              ),
+                new _Location("You are on a bridge over river", "rgb(108,181,242)",
+                               "33", [false, true, false, true], []
+                              ),
+                new _Location("You are by the old tavern", "rgb(255,189,117)",
+                               "34", [false, false, true, false], []
+                              ),
+                new _Location("You are at the town's end", "rgb(255,190,99)",
+                               "35", [true, true, false, true], []
+                              ),
+                new _Location("You are in a butcher's shop", "rgb(255,188,102)",
+                               "36", [false, false, false, true], []
+                              ),
+                new _Location("You are in a cooper's house", "rgb(255,188,102)",
+                               "37", [false, false, false, true], []
+                              )
+            ],
+            [//trzy
+                new _Location("You are in the Wawel Castle", "rgb(255,176,141)",
+                               "41", [false, false, true, false], []
+                              ),
+                new _Location("You are inside a dragon's cave", "rgb(198,205,193)",
+                               "42", [true/*warunkowe*/, false, true, false], []
+                              ),
+                new _Location("A perfect place to set a trap", "rgb(255,176,141)",
+                               "43", [true, true, false, false], []
+                              ),
+                new _Location("You are by the water mill", "rgb(255,190,99)",
+                               "44", [false, false, true, false], [game.items[21]]
+                              ),
+                new _Location("You are at a main crossroad", "rgb(255,190,99)",
+                               "45", [true, true, true, true], []
+                              ),
+                new _Location("You are on a town street", "rgb(255,190,99)",
+                               "46", [true, true, true, false], []
+                              ),
+                new _Location("You are in a frontyard of your house", "rgb(255,190,99)",
+                               "47", [true, true, false, true], []
+                              )
+            ],
+            [//cztery
+                new _Location("Secret Location", "rgb(255,64,64)",
+                               "41", [false, true, true, true], [game.items[9]]
+                              ),
+                new _Location("Secret Location", "rgb(255,64,64)",
+                               "41", [true, true, true, true], [game.items[9]]
+                              ),
+                new _Location("Secret Location", "rgb(255,64,64)",
+                               "41", [true, true, true, true], [game.items[9]]
+                              ),
+                new _Location("You are by a swift stream", "rgb(108,181,242)",
+                               "54", [false, false, true, false], []
+                              ),
+                new _Location("You are on a street leading forest", "rgb(255,190,99)",
+                               "55", [true, true, false, true], [game.items[33]]
+                              ),
+                new _Location("You are in a woodcutter's backyard", "rgb(255,190,99)",
+                               "56", [false, false, false, true], []
+                              ),
+                new _Location("You are in a shoemaker's house", "rgb(254,194,97)",
+                               "57", [false, true, false, false], []
+                              )
+            ],
+            [//pięć
+                new _Location("Secret Location", "rgb(255,64,64)",
+                               "41", [false, true, true, false], [game.items[9]]
+                              ),
+                new _Location("Secret Location", "rgb(255,64,64)",
+                               "41", [true, true, true, false], [game.items[9]]
+                              ),
+                new _Location("Secret Location", "rgb(255,64,64)",
+                               "41", [true, true, true, false], [game.items[9]]
+                              ),
+                new _Location("You are in a bleak funeral house", "rgb(254,194,97)",
+                               "64", [false, false, true, false], [game.items[24]]
+                              ),
+                new _Location("You are on a path leading to the wood", "rgb(167,245,63)",
+                               "65", [true, true, true, false], []
+                              ),
+                new _Location("You are at the edge of a forest", "rgb(167,245,63)",
+                               "66", [true, true, true, false], []
+                              ),
+                new _Location("You are in a deep forest", "rgb(140,253,99)",
+                               "67", [true, false, false, false], []
+                              )
+            ]]
+        
+        game.interactions = [
+                new _Interaction(game.items[10], [4, 5], game.items[11], true,  ["You opened a tool shed and took an axe"], false),
+                new _Interaction(game.items[11], [5, 6], game.items[12], true,  ["You cut sticks for sheeplegs"], false),
+                new _Interaction(game.items[12], [3, 2], game.items[13], false, ["You prepared legs for your fake sheep"], true),
+                new _Interaction(game.items[14], [2, 3], game.items[15], true,  ["The tavern owner paid you money"], false),
+                new _Interaction(game.items[15], [2, 6], game.items[16], true,  ["The cooper sold you a new barrel"], false),
+                new _Interaction(game.items[16], [3, 2], game.items[17], false, ["You made a nice sheeptrunk, OK"], true),
+                new _Interaction(game.items[18], [2, 5], game.items[19], true,  ["The butcher gave you wool"], false),
+                new _Interaction(game.items[19], [3, 2], game.items[20], false, ["You prepared skin for your fake sheep"], true),
+                new _Interaction(game.items[21], [4, 6], game.items[22], true,  ["You used your tools to make a rag"], false),
+                new _Interaction(game.items[22], [3, 2], game.items[23], false, ["You made a fake sheephead"], true),
+                new _Interaction(game.items[24], [0, 0], game.items[25], true,  ["You are digging...", "and digging...", "That's enough sulphur for you"], true),
+                new _Interaction(game.items[25], [3, 2], game.items[26], false, ["You prepared a solid poison"], false),
+                new _Interaction(game.items[27], [1, 0], game.items[28], true,  ["You got a bucket full of tar"], false),
+                new _Interaction(game.items[28], [3, 2], game.items[29], false, ["You prepared a liquid poison"], true),
+                new _Interaction(game.items[66], [3, 2], game.items[37], false,  ["Your fake sheep is full of poison and ready to be eaten by the dragon"], false),
+                new _Interaction(game.items[37], [3, 2], game.items[30], false, ["The dragon noticed your gift...", "The dragon ate your sheep and died!"], true),
+                new _Interaction(game.items[33], [3, 2], game.items[34], true,  ["You cut a piece of dragon's skin"], false),
+                new _Interaction(game.items[34], [4, 6], game.items[35], true,  ["You used your tools to make shoes"], false),
+                new _Interaction(game.items[35], [3, 0], game.items[36], true,  ["The King is impressed by your shoes"], false),
+                new _Interaction(game.items[36], [3, 0], game.items[36], true,  ["Even the best story finally must end...", "But..."], true)
+            ]
+        
+        /*game.inventory[0] = game.items[35]
+        game.milestone = 8
+        game.x = 3
+        game.y = 0
+        game.map[3][2].item[0] = game.items[32]*/
+        
+        
+        document.addEventListener("DOMContentLoaded", function(event) {
+            document.body.innerHTML = "<header>Dratewka <br/> the Shoemaker</header><div id='button'>[]</div><div class='plansza' id='plansza' ></div><footer>Niechaj 2017</footer>"
+            document.getElementById("button").onclick = function(){
+                if(game.fullscreen_count == true){
+                    game.fullscreen_count = false
+                }else{
+                    game.fullscreen_count = true
+                }
+                game.fullscreen()
+            }
+            game.intro.intro_start()
+            //game.init()
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
